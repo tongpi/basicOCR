@@ -1,5 +1,5 @@
 # 简介
-  [详细]( https://tongpi.github.io/basicOCR/)
+  ![](images/1.jpg)
 # 目录结构
 # 如何开始？
 # 如何参与？
