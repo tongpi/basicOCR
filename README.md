@@ -4,11 +4,11 @@
 ### 数据集
 - [佟派中文合成文本数据集](https://tongpi.github.io/synthtext100kCH/)
 ### 成果：
-- [Attention_ocr技术总结 张晶](docs/zhangj/attention_ocr_da03.md)
+- [Attention_ocr技术总结 2017 张晶](docs/zhangj/attention_ocr_da03.md)
   
-- [TextBox实验记录 瑜珊](docs/yushan/textbox.md)
+- [TextBox实验记录 2017 瑜珊](docs/yushan/textbox.md)
   
-- [基于TensorFlow的车牌号识别系统 毛少将](docs/maoshaojiang/基于TensorFlow的车牌号识别系统.md)
+- [基于TensorFlow的车牌号识别系统 2017 毛少将](docs/maoshaojiang/基于TensorFlow的车牌号识别系统.md)
 
 
 
