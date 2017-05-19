@@ -50,8 +50,7 @@ height="1.59375in"}
 
 seq2seq模型**按照时间展开**的结构如下图所示：
 
-![http://img.blog.csdn.net/20170509152556448?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](media/image6.png){width="2.875in"
-height="2.818784995625547in"}
+![http://img.blog.csdn.net/20170509152556448?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](http://img.blog.csdn.net/20170509152556448?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 **Encoder 部分**，就是一个RNNCell（RNN ，GRU，LSTM 等） 结构。每个
 timestep， 我们向 Encoder
@@ -181,8 +180,7 @@ height="2.7604166666666665in"}
 LSTMs 的核心思想
 ----------------
 
-![http://img.blog.csdn.net/20170301105024068?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](media/image18.png){width="5.768055555555556in"
-height="1.7767115048118984in"}
+![http://img.blog.csdn.net/20170301105024068?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](http://img.blog.csdn.net/20170301105024068?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 LSTMs 最关键的地方在于 cell（整个绿色的框就是一个 cell） 的状态 和
 结构图上面的那条横穿的水平线。
@@ -203,8 +201,7 @@ gate layer ”的sigmoid
 的各部分信息通过的比重。 **0 表示“不让任何信息通过”， 1
 表示“让所有信息通过”。**
 
-![http://img.blog.csdn.net/20170301112027436?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](media/image19.png){width="6.125in"
-height="1.8846161417322835in"}
+![http://img.blog.csdn.net/20170301112027436?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](http://img.blog.csdn.net/20170301112027436?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 ### 传入门
 
