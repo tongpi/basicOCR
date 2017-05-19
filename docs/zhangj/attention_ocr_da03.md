@@ -15,18 +15,15 @@ Encoder-Decoder框架可以看作是**一种文本处理领域的研究模式**�
 
 Encoder-Decoder框架可以这么直观地去理解：可以把它看作适合处理由一个句子（或篇章）生成另外一个句子（或篇章）的通用处理模型。对于句子对&lt;X,Y&gt;，我们的目标是给定输入句子X，期待通过Encoder-Decoder框架来生成目标句子Y。X和Y可以是同一种语言，也可以是两种不同的语言。而X和Y分别由各自的单词序列构成：
 
-![http://img.blog.csdn.net/20160120181636077](media/image2.jpeg){width="1.8854166666666667in"
-height="0.7604166666666666in"}
+![http://img.blog.csdn.net/20160120181636077](http://img.blog.csdn.net/20160120181636077)
 
 Encoder顾名思义就是对输入句子X进行编码，将输入句子通过非线性变换转化为**中间语义表示C**：
 
-![http://img.blog.csdn.net/20160120181707734](media/image3.jpeg){width="2.1458333333333335in"
-height="0.375in"}
+![http://img.blog.csdn.net/20160120181707734](http://img.blog.csdn.net/20160120181707734)
 
 对于解码器Decoder来说，其任务是根据句子X的中间语义表示C和之前已经生成的历史信息y1,y2….yi-1来生成i时刻要生成的单词yi 
 
-![http://img.blog.csdn.net/20160120181744247](media/image4.jpeg){width="2.5625in"
-height="0.3541666666666667in"}
+![http://img.blog.csdn.net/20160120181744247](http://img.blog.csdn.net/20160120181744247)
 
 每个yi都依次这么产生，那么看起来就是整个系统根据输入句子X生成了目标句子Y。
 
@@ -105,8 +102,7 @@ Jerry，Encoder-Decoder框架逐步生成中文单词：“汤姆”，“追逐
 
 引入AM模型的Encoder-Decoder框架如下图所示：
 
-![http://img.blog.csdn.net/20160120181841922](media/image10.jpeg){width="5.768055555555556in"
-height="2.7913681102362204in"}
+![http://img.blog.csdn.net/20160120181841922)](http://img.blog.csdn.net/20160120181841922)
 
 即生成目标句子单词的过程成了下面的形式：
 
@@ -131,8 +127,7 @@ height="0.5104166666666666in"}
 
 其中，f2函数代表Encoder对输入英文单词的某种变换函数，比如如果Encoder是用的RNN模型的话，这个f2函数的结果往往是某个时刻输入xi后隐层节点的状态值；g代表Encoder根据单词的中间表示合成整个句子中间语义表示的变换函数,一般是加权和。对应的注意力模型权值分别是0.6,0.2,0.2。如果形象表示的话，翻译中文单词“汤姆”的时候，数学公式对应的中间语义表示Ci的形成过程类似下图：
 
-![http://img.blog.csdn.net/20160120182034485](media/image14.jpeg){width="5.041666666666667in"
-height="4.552083333333333in"}
+![http://img.blog.csdn.net/20160120182034485](http://img.blog.csdn.net/20160120182034485)
 
 LSTM
 ====
@@ -220,8 +215,7 @@ height="1.8846161417322835in"}
 tanh 层生成一个向量，也就是备选的用来更新的内容，*Ct*\~
 。在下一步，我们把这两部分联合起来，对 cell 的状态进行一个更新。
 
-![http://img.blog.csdn.net/20170301115512234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](media/image20.png){width="5.768055555555556in"
-height="1.7747867454068242in"}
+![http://img.blog.csdn.net/20170301115512234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](http://img.blog.csdn.net/20170301115512234?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 在我们的语言模型的例子中，我们想把新的主语性别信息添加到 cell
 状态中，来替换掉老的状态信息。\
@@ -229,8 +223,7 @@ height="1.7747867454068242in"}
 从结构图中应该能一目了然， 首先我们把旧的状态 *Ct*−1和*ft*相乘，
 把一些不想保留的信息忘掉。然后加上*it*∗*Ct*\~。这部分信息就是我们要添加的新内容。
 
-![http://img.blog.csdn.net/20170301120227745?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](media/image21.png){width="5.768055555555556in"
-height="1.7747867454068242in"}
+![http://img.blog.csdn.net/20170301120227745?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](http://img.blog.csdn.net/20170301120227745?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 ### 输出门
 
@@ -241,8 +234,7 @@ height="1.7747867454068242in"}
 tanh 层（把数值都归到 -1 和 1 之间），然后把 tanh 层的输出和 sigmoid
 层计算出来的权重相乘，这样就得到了最后输出的结果。
 
-![http://img.blog.csdn.net/20170301121358058?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](media/image22.png){width="5.768055555555556in"
-height="1.7747867454068242in"}
+![http://img.blog.csdn.net/20170301121358058?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast](http://img.blog.csdn.net/20170301121358058?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvSmVycl9feQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 三、Attention\_ocr
 ==================
@@ -398,8 +390,7 @@ word\_len + 2),
 
 ### 3）attention\_ocr结构
 
-![example image 0](media/image23.jpeg){width="4.645833333333333in"
-height="6.197916666666667in"}
+![example image 0](media/image23.jpeg)
 
 #### **特征提取：**
 
