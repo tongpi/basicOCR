@@ -11,5 +11,11 @@
 # 如何开始？
 # 如何参与？
 
+# 成果：
+   [Attention_ocr技术总结 张晶](docs/zhangj/attention_ocr_da03.md)
+   [TextBox实验记录 瑜珊](docs/yushan/textbox.md)
+   [基于TensorFlow的车牌号识别系统 毛少将](docs/maoshaojiang/基于TensorFlow的车牌号识别系统.md)
+
+
 
  
