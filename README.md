@@ -2,7 +2,7 @@
 # 简介
 ![](docs/images/1.jpg)
 ## 数据集
-  [佟派中文合成文本数据集](https://tongpi.github.io/synthtext100kCH/)
+- [佟派中文合成文本数据集](https://tongpi.github.io/synthtext100kCH/)
 ## 成果：
 - [Attention_ocr技术总结 张晶](docs/zhangj/attention_ocr_da03.md)
   
