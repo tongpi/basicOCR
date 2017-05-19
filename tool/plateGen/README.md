@@ -4,7 +4,8 @@
 python genplate_plate.py 
 ```
 
->执行完毕会在result_dataset下生成一个标注文件test.txt和一个100个车牌图片目录images
+> 执行完毕会在result_dataset下生成一个标注文件test.txt和一个100个车牌图片目录images
+
 > 参见：https://github.com/szad670401/end-to-end-for-chinese-plate-recognition
 
 ## 2 修改
