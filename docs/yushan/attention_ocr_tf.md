@@ -208,6 +208,7 @@ char\_one\_hot函数为每一个字符逻辑创建对应one-hot编码。即：
 AttentionWithAutoregression没有重载unroll\_cell函数，即也是调用tensorflow中的核心attention\_decoder函数。
 
 ##3.与其他模型的比较##
+
 **1..CRNN**
 
 （1）CNN模块预处理得到特征图
