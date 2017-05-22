@@ -170,7 +170,7 @@ a）运行cell，参数为decoder\_input某个时刻的值, 注意力掩码和�
 
 	x = linear([inp] + attns, input_size, True)
 
-	cell\_output, new_state = cell(x, prev_state)
+	cell_output, new_state = cell(x, prev_state)
 
 b)计算新时刻的注意力掩码和注意力掩码和特征图的加权和(Ut)：
 
@@ -180,7 +180,7 @@ b)计算新时刻的注意力掩码和注意力掩码和特征图的加权和(Ut
 
 c\) 计算t时刻的输出
 
-	output = linear(\[cell\_output\] + attns, output\_size, True)
+	output = linear([cell_output] + attns, output_size, True)
 
 这里的output就是下面这个式子中softmax的参数。即output直接传入到softmax后，就可获得分别属于每个字母的概率。
 
