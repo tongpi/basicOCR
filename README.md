@@ -4,6 +4,9 @@
 ### 数据集
 - [佟派中文合成文本数据集](https://tongpi.github.io/synthtext100kCH/)
 ### 成果：
+
+- [基于多视角特征信息的attention ocr 2017 瑜珊](docs/yushan/attention_ocr_tf.md)
+
 - [Attention_ocr技术总结 2017 张晶](docs/zhangj/attention_ocr_da03.md)
   
 - [TextBox实验记录 2017 瑜珊](docs/yushan/textbox.md)
