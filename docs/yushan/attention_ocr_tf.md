@@ -1,8 +1,8 @@
-#基于多视角特征信息的attention ocr #
+>**基于多视角特征信息的attention ocr**
 
 [*https://github.com/tensorflow/models/tree/master/attention\_ocr*](https://github.com/tensorflow/models/tree/master/attention_ocr)
 
-##1.训练脚本##
+**一.训练脚本**
 
 【从头开始训练】
 
@@ -59,8 +59,7 @@ fsns.py中定义的主要参数包括：(fsns主要定义数据集的格式)
 
 <!-- -->
 
-
-##2.模型结构##
+>**二.模型结构**
 
 1.  **模型概述**
 
@@ -148,7 +147,7 @@ create\_logits函数首先定义了解码模块的基础单元为LSTMCell，这�
 
 接着，create\_logits函数将上面创建的LSTM的基础单元传入unroll\_cell函数，完成解码的功能。Attention类重载了unroll\_cell函数。AttentionWithAutoregression类重载了要传给unroll\_cell函数的传入参数，即get\_train\_input函数中的get\_train\_input函数和get\_eval\_input函数。
 
-**1.  attention模型**
+**（1）.  attention模型**
 
 attention模型的unroll\_cell函数调用了tf.contrib.legacy\_seq2seq.attention\_decoder函数。
 
@@ -187,7 +186,7 @@ c\) 计算t时刻的输出
 
 ![](attention_ocr_tf/media/image4.png){width="2.388059930008749in" height="0.43179133858267715in"}
 
-**2.AttentionWithAutoregression模型**
+**（2）.AttentionWithAutoregression模型**
 
 AttentionWithAutoregression模型的重载了get\_train\_input函数和get\_eval\_input函数。
 
@@ -207,11 +206,11 @@ char\_one\_hot函数为每一个字符逻辑创建对应one-hot编码。即：
 
 AttentionWithAutoregression没有重载unroll\_cell函数，即也是调用tensorflow中的核心attention\_decoder函数。
 
-##3.与其他模型的比较##
+>**三.与其他模型的比较**
 
 **1..CRNN**
 
-（1）CNN模块预处理得到特征图
+**（1）CNN模块预处理得到特征图**
 
 输入图像高度为32，宽度不限。
 
@@ -237,7 +236,7 @@ AttentionWithAutoregression没有重载unroll\_cell函数，即也是调用tenso
 
 由于图像高始终为32，这里输出的高始终为1。
 
-（2）RNN模块，为编解码模块
+**（2）RNN模块，为编解码模块**
 
 一个双向的LSTM模块单元为编码模块，编码的LSTM单元的输入数据维度为512，隐藏单元个数为256，那么输出数据维数为256。
 
@@ -247,13 +246,13 @@ AttentionWithAutoregression没有重载unroll\_cell函数，即也是调用tenso
 
 [*https://github.com/da03/Attention-OCR*](https://github.com/da03/Attention-OCR)
 
-（1）CNN模块预处理得到特征图
+**（1）CNN模块预处理得到特征图**
 
 输入图像高度为32，宽度不限。和上面的RCNN方法中的CNN模块结构一样。
 
 输出为512维，图像的高为1，宽为输入的高/16 – 1;
 
-（2）RNN模块，为编解码模块
+**(2）RNN模块，为编解码模块**
 
 一个双向的LSTM模块单元为编码模块，编码的LSTM单元的输入数据维度为512，隐藏单元个数为256，那么输出数据维数为256。这个模块和前面的RCNN一样。
 
