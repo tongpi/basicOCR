@@ -299,7 +299,7 @@ GitHub 地址：[https://github.com/phodal/mdpub](https://github.com/phodal/mdpu
 单行高亮：``phodal`` 测试
 ```
 
-```javascript
+``````javascript
 (function() {
       var input, output;
       var converter = new showdown.Converter();
@@ -318,11 +318,11 @@ GitHub 地址：[https://github.com/phodal/mdpub](https://github.com/phodal/mdpu
         updateOutput();
       });
     })();
-```
+``````
 
-```
+``````
 echo 'hello,world'
-```
+``````
 
 ```
 下面是一个列表的示例，技术栈：
