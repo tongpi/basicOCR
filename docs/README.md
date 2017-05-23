@@ -296,6 +296,7 @@ GitHub 地址：[https://github.com/phodal/mdpub](https://github.com/phodal/mdpu
 ### 一些示例
 
 单行高亮：``phodal`` 测试
+```
 
 ```javascript
 (function() {
@@ -322,6 +323,7 @@ GitHub 地址：[https://github.com/phodal/mdpub](https://github.com/phodal/mdpu
 echo 'hello,world'
 ```
 
+```
 下面是一个列表的示例，技术栈：
 
 1. Google Code Prettify
