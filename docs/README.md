@@ -101,7 +101,85 @@
         *   [编码的练习](http://github.phodal.com/#编码的练习)
         *   [See you Again](http://github.phodal.com/#see-you-again)
         
-        
+ ## 公众号 Phodal 专用编辑器
+
+GitHub 地址：[https://github.com/phodal/mdpub](https://github.com/phodal/mdpub)
+
+更多精彩内容请<ruby>关注<rt>扫码</rt></ruby>：
+
+![图注：Phodal's Wechat](http://articles.phodal.com/qrcode.jpg)
+
+### 目录示例：
+
+[toc]
+
+### 一些示例
+
+单行高亮：``phodal`` 测试
+
+这是一个脚注的测试 [^note]
+
+```javascript
+(function() {
+      var input, output;
+      var converter = new showdown.Converter();
+
+      function updateOutput() {
+          output.innerHTML = converter.makeHtml(input.value);
+      }
+
+      document.addEventListener("DOMContentLoaded", function(event) {
+        input = document.getElementById('input');
+        output = document.getElementById('output');
+
+        input.addEventListener('input', updateOutput, false);
+        input.addEventListener('keydown', updateOutput, false);
+
+        updateOutput();
+      });
+    })();
+```
+
+```
+echo 'hello,world'
+```
+
+下面是一个列表的示例，技术栈：
+
+1. Google Code Prettify
+2. Showdown.js
+3. Clipboard
+
+另外一个列表：
+
+- Google Code Prettify
+- Showdown.js
+- Clipboard
+
+表格示例：
+
+| h1    |    h2   |      h3 |
+|-------|---------|---------|
+| 100   | [a][1]  | ![b][2] |
+| *foo* | **bar** | ~~baz~~ |
+| *foo* | **bar** | ~~baz~~ |
+
+
+### Todo Example
+
+ - [ ] Mercury
+ - [x] Venus
+ - [x] Earth (Orbit/Moon)
+ - [x] Mars
+ - [ ] Jupiter
+ - [ ] Saturn
+
+[^note]: 测试是指测试
+
+
+ 
+ 
+ 
 ## 1. 论文要解决的问题是什么，该问题为什么重要？
 
 > 目前OCR领域主要集中在约束场景下手工设计图像特征。（约束意味着在推理过程中存在一个固定的词典或词典，单词长度已知。）论文要解决的是无约束场景文本识别任务。这一任务存在很多问题未解决，主要原因有三：一是场景文本的多样性，即文本在不可控的环境中可拥有完全不同的字体、颜色、尺度和方向等；二是背景的复杂性，即自然场景图像中的背景通常是复杂的，且存在大量和真实文本十分相似的物体，因此容易导致混淆和错误；三是其他外界因素的干扰，如：扭曲、部分遮挡、光照不均等。
