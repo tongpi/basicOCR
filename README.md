@@ -1,7 +1,7 @@
 [![Join the chat at https://gitter.im/tongpi/basicOCR](https://badges.gitter.im/tongpi/basicOCR.svg)](https://gitter.im/tongpi/basicOCR?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ### 简介
 
-BasicOCR是一个致力于解决自然场景文字识别算法研究的项目。该项目由长城数字大数据应用技术研究院佟派AI团队发起和维护。 详见：https://tongpi.github.io/basicOCR/
+    BasicOCR是一个致力于解决自然场景文字识别算法研究的项目。该项目由长城数字大数据应用技术研究院佟派AI团队发起和维护。 详见：https://tongpi.github.io/basicOCR/
     
 ![](docs/images/1.jpg)
 
