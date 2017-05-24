@@ -8,8 +8,6 @@ BasicOCR是一个致力于解决自然场景文字识别算法研究的项目。
 ### 数据集
 - [佟派中文合成文本数据集](https://tongpi.github.io/synthtext100kCH/)
 
-### 工具
-    *   [中国车牌生成工具](tool/plateGen)
 ### 模型
 
 ### 总结：
