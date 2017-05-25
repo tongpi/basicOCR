@@ -11,14 +11,15 @@
 ### 模型
 
 ### 总结：
+- [译：所见即所得——视觉标记解码器(What You Get Is What You See : A Visual Markup Decompiler)](docs/nizhan/WYGIWYS/WYGIWYS.md)  2017 詹妮
 
 - [基于多视角特征信息的attention ocr](docs/yushan/attention_ocr_tf.md)  2017 瑜珊
 
 - [Attention_ocr技术总结](docs/zhangj/attention_ocr_da03.md)  2017 张晶
   
-- [TextBox实验记录 2017 瑜珊](docs/yushan/textbox.md)  2017 瑜珊
+- [TextBox实验记录](docs/yushan/textbox.md)  2017 瑜珊
   
-- [基于TensorFlow的车牌号识别系统 2017 毛少将](docs/maoshaojiang/基于TensorFlow的车牌号识别系统.md)  2017 毛少将
+- [基于TensorFlow的车牌号识别系统](docs/maoshaojiang/基于TensorFlow的车牌号识别系统.md)  2017 毛少将
 
 
 
