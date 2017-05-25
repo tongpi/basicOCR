@@ -1,4 +1,4 @@
-What You Get Is What You See : [[]{#OLE_LINK2 .anchor}]{#OLE_LINK1 .anchor}A Visual Markup Decompiler
+What You Get Is What You See : A Visual Markup Decompiler
 
 译：所见即所得——视觉标记解码器
 
@@ -12,7 +12,7 @@ What You Get Is What You See : [[]{#OLE_LINK2 .anchor}]{#OLE_LINK1 .anchor}A Vis
 
 例如，在手写识别（Ciresan等人，2010），自然界场景OCR（Jaderberg等人，2015/2016， Wang等人2012）和图像标题生成（Karpathy和Fei-Fei 2015，Vinyals等人2015B）。在高阶中，这些系统中的每学习一个输入图像的抽象编码表示然后将其解码以产生文本输出。在除了在标准任务上执行得很好，这些模型完全是数据驱动的，这使得它们适应性强到广泛的数据集，而不需要大量的数据预处理输入或域特定工程。转向图像的数据驱动神经方法文字引导我们重新审视生成结构化的问题标记。我们考虑监督模式是否可以学习从图像中产生正确的呈现标记，而不需要文本或视觉语法底层标记语言。而语言的结果建模表明神经模型可以一致地产生语法正确的标记（Karpathy，Johnson，and 李2015 Vinyals等人2015a），不清楚是否充分解决方案可以从标记图像对中学习。我们的模型，WYGIWYS \[你得到的是你所看到的\]，是基于注意的编码器解码器的简单扩展模型（Bahdanau，Cho和Bengio 2014），现在是机器翻译标准。类似于在图像中工作标题（Xu et al。2015），该模型纳入了多层卷积网络上的图像与注意力循环神经网络解码器。去适应这个模型对OCR的问题和捕获文件的时间布局，我们还结合了一个新的源代码编码器以前应用的多行反复模型的形式应用注意。另外使用注意事项从生成的标记提供对齐到原始图像（见图1）。我们还引入了两个新的数据集，用于图像到标记任务。初步实验使用数据集的小型合成几何学HTML示例呈现为网页。对于主要实验，我们介绍一个新的数据集，IM2LATEX-100K，由大型集合组成所呈现的现实世界数学表达式从发表文章。我们会公开发表这个数据集作为工作的一部分。对相同的模型架构进行了训练，以生成HTML和LaTeX标记目标渲染到准确的源图像。实验将模型的输出与几项研究进行比较和商业基线，以及该模型的消融。 用于数学表达的完整系统一代能够匹配图像的15％以内的图像编辑距离，在超过75％的现实世界中是相同的测试示例。 另外使用多行编码器导致性能显著提高。所有数据，模型和评估脚本在[*http://lstm.seas.harvard.edu/latex/*](http://lstm.seas.harvard.edu/latex/)。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694154(1).png](WW/media/image1.png){width="5.812130358705162in" height="1.4260870516185478in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694154(1).png](WW/media/image1.png)
 
 **问题：图像到标记生成**
 
@@ -26,7 +26,7 @@ What You Get Is What You See : [[]{#OLE_LINK2 .anchor}]{#OLE_LINK1 .anchor}A Vis
 
 图像的视觉特征是用最大多层卷积神经网络（带最大池化层）提取出来的。 这个网络架构现在是标准的，我们在Shi.等人使用的网络之后又进行了特别建模。 （2015年）对于OCR从图像（规格在表2中给出。）与最近的OCR工作（Jaderberg等人，2015; Lee和Osindero 2016）不同，我们不使用最终完全连接的层（Ioffe和Szegedy 2015） 因为我们想保留CNN功能的局部性，以便使用视觉注意。 CNN采用原始输入R\_H\*W，并产生大小为D\*H’\*W’的特征网格V，其中c表示通道数，H’和W’是从池化层中减小的大小。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694322(1).png](WW/media/image2.png){width="3.982638888888889in" height="5.8in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694322(1).png](WW/media/image2.png)
 
 **原始编码：**
 
@@ -38,13 +38,13 @@ What You Get Is What You See : [[]{#OLE_LINK2 .anchor}]{#OLE_LINK1 .anchor}A Vis
 
 **解码：**
 
-然后，基于注解网格〜V的序列由解码器生成目标标记令牌fytg。 解码器被训练为条件语言模型，以给出给定历史和注释的下一个令牌的概率。该语言模型被定义在解码器RNN之上，
+然后，基于注解网格?V的序列由解码器生成目标标记令牌fytg。 解码器被训练为条件语言模型，以给出给定历史和注释的下一个令牌的概率。该语言模型被定义在解码器RNN之上，
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495682124(1).png](WW/media/image3.png){width="4.214432414698162in" height="0.5232556867891514in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495682124(1).png](WW/media/image3.png)
 
 其中W\_out是学习的线性变换，o\_t = tanh（W\_c \[h\_t; c\_t\]）。 向量h\_t用于汇总解码历史：h\_t = RNN（ht-1; \[y\_t-1;o\_t-1\]）。 下面定义的上下文矢量c\_t用于从注释网格捕获上下文信息。 在每个时间步长t，上下文向量c\_t考虑到注释网格。 然而，由于大多数注释单元可能是无关紧要的，所以模型应该知道要使用哪个单元格。 我们使用注意模型来模拟这种对齐（Bahdanau，Cho和Bengio 2014）：
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495682368(1).png](WW/media/image4.png){width="2.2330993000874892in" height="1.2093022747156605in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495682368(1).png](WW/media/image4.png)
 
 其中[[]{#OLE_LINK4 .anchor}]{#OLE_LINK3 .anchor}αt是基于et计算的权重，并且权重向量ωt和所有注释向量{V’t}被组合以形成上下文向量c\_t。 注意，a和Φ有不同的选择，我们遵循过去的实证工作，并使用e\_it =βT\*tanh（Whhi-1+ WvV’t）和c\_i = ∑alpha\_it\*V\_t (Luong，Pham和Manning 2015）。 向量c\_t和h\_t结合在一起以预测令牌y\_t的概率。 图1显示了模型每个步骤αt中注意力分布的真实例子。
 
@@ -60,13 +60,13 @@ What You Get Is What You See : [[]{#OLE_LINK2 .anchor}]{#OLE_LINK1 .anchor}A Vis
 
 我们的初步数据集是一个综合生成的“网页”集合，用作测试模型是否可以学习相对空间定位。 我们生成一个由100k唯一的HTML片段和相应的渲染图像组成的数据集。 图像使用Webkit编译，生成大小为100的图像。该任务是基于呈现的图像来推断HTML标记。 HTML标记是使用简单的上下文无关语法生成的。 语法递归生成每个具有实体边框，随机宽度和随机浮动（左或右）的div。 每个div可以选择性地递归地垂直或水平分割。 递归的最大深度限于div的2个嵌套层。 最后，我们对元素的宽度施加了几个约束，以避免重叠。 图3显示了从数据集中采样的示例代码段。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694272(1).png](WW/media/image5.png){width="4.138888888888889in" height="1.9479166666666667in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694272(1).png](WW/media/image5.png)
 
 **LaTex数学公式**
 
 我们的主要数据集，IM2LATEX-100K，收集了大量的真实世界用LaTeX编写数学表达式。 该数据集提供了一个更难的测试台，用于学习如何重现自然出现的标记。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694346(1).png](WW/media/image6.png){width="3.938888888888889in" height="2.4784722222222224in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694346(1).png](WW/media/image6.png)
 
 **语料库**
 
@@ -76,9 +76,8 @@ IM2LATEX-100K数据集提供103,556种不同的LaTeX数学方程以及渲染图�
 
 数据集被分为训练集（83,883个方程），验证集（9,319方程）和测试集（10,354方程），用于标准化实验设置。 LaTeX配方范围从38到997个字符，平均118和中位数98。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694395(1).png](WW/media/image7.png){width="3.982638888888889in" height="2.2263888888888888in"}
-
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694417(1).png](WW/media/image8.png){width="6.285439632545931in" height="1.4521741032370954in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694395(1).png](WW/media/image7.png)
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694417(1).png](WW/media/image8.png)
 
 **标记化**
 
@@ -100,7 +99,7 @@ IM2LATEX-100K数据集提供103,556种不同的LaTeX数学方程以及渲染图�
 
 我们还运行了将模型与传统LM方法进行比较的实验，包括标准NGRAM模型（使用Kneser-Ney平滑训练的5克）和LSTM-LM。这表明改进有多少来自改进底层标记的语言建模。最后，对于LaTeX，我们还用完整的规范化，和简单的标记化来进行评估。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694482(1).png](WW/media/image9.png){width="4.095833333333333in" height="3.5131944444444443in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694482(1).png](WW/media/image9.png)
 
 **评 估**
 
@@ -120,9 +119,9 @@ IM2LATEX-100K数据集提供103,556种不同的LaTeX数学方程以及渲染图�
 
 原始图像仅裁剪到公式区域，并以8像素填充到顶部，左侧，右侧和底部。 为了高效，我们将所有图像缩小到原始尺寸的一半。 为了方便批处理，我们将图像分成类似的尺寸，并使用空格填充.8在训练和验证过程中（包括在测试中），忽略所有尺寸较大的LaTeX公式，超过150个令牌或不能由我们的解析器解析的图像。 由于GPU内存的大小限制，培训批量大小设置为20。 培训过程大约需要20个小时。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694517(1).png](WW/media/image10.png){width="4.088281933508312in" height="1.7391305774278216in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694517(1).png](WW/media/image10.png)
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694547(1).png](WW/media/image11.png){width="4.121527777777778in" height="6.04375in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495694547(1).png](WW/media/image11.png)
 
 **结 果**
 
