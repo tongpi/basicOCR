@@ -10,7 +10,7 @@
 
 ### 模型
 
-### 总结：
+### 文章：
 - [译：所见即所得——视觉标记解码器(What You Get Is What You See : A Visual Markup Decompiler)](docs/nizhan/WYGIWYS/WYGIWYS.md)  2017 詹妮
 
 - [基于多视角特征信息的attention ocr](docs/yushan/attention_ocr_tf.md)  2017 瑜珊
