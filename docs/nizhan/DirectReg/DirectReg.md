@@ -1,4 +1,4 @@
-**论文**[[]{#OLE_LINK5 .anchor}]{#OLE_LINK4 .anchor}**Deep Direct Regression for Multi-Oriented Scence Text Detection浅析**
+**论文** **Deep Direct Regression for Multi-Oriented Scence Text Detection浅析**
 
 原文：[*https://arxiv.org/abs/1703.08289v1*](https://arxiv.org/abs/1703.08289v1)
 
