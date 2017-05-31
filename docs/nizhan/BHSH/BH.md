@@ -8,7 +8,8 @@
 
 笔画是指汉字书写时不间断地一次连续写成的一个线条，它是汉字的最小构成单位，可分为横折、横、竖、竖钩、撇、点、这几类（一、丨、丿和丶），具体细分可达40种。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778608(1).png](bhsb/media/image1.png){width="2.962687007874016in" height="1.7239720034995625in"}![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778662(1).png](bhsb/media/image2.png)
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778608(1).png](bhsb/media/image1.png)
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778662(1).png](bhsb/media/image2.png)
 
 **·按笔画识别的难点**
 
