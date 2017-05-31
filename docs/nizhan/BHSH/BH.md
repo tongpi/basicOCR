@@ -8,7 +8,7 @@
 
 笔画是指汉字书写时不间断地一次连续写成的一个线条，它是汉字的最小构成单位，可分为横折、横、竖、竖钩、撇、点、这几类（一、丨、丿和丶），具体细分可达40种。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778608(1).png](bhsb/media/image1.png){width="2.962687007874016in" height="1.7239720034995625in"}![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778662(1).png](bhsb/media/image2.png){width="2.141791338582677in" height="1.7123906386701662in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778608(1).png](bhsb/media/image1.png){width="2.962687007874016in" height="1.7239720034995625in"}![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495778662(1).png](bhsb/media/image2.png)
 
 **·按笔画识别的难点**
 
@@ -30,7 +30,7 @@
 
 笔画图像中包含有文字形态的四大特征：纵横比，四边码，四角码和投影。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495789058(1).png](bhsb/media/image3.png){width="3.5in" height="1.6207655293088363in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495789058(1).png](bhsb/media/image3.png)
 
 **纵横比**：骨架外包图的长宽比值，这个特征的计算十分简单，但是在描述笔画大致形状方面非常有效。
 
@@ -40,11 +40,11 @@
 
 **投影**：做两条对角线，分别在每个三角分割区域内垂直对角方向投影，将投影结果相加，除以对角线长度做归一化处理，并量化成两个离散值。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495789519(1).png](bhsb/media/image4.png){width="3.7313429571303587in" height="2.0182141294838147in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495789519(1).png](bhsb/media/image4.png)
 
 除了四大特征，还有文字的拓扑结构需要建立，笔画的位置关系可用八个方向描述：北，西北，西，西南，南，东南，东，东北。
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495792361(1).png](bhsb/media/image5.png){width="1.785300743657043in" height="3.2649431321084865in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495792361(1).png](bhsb/media/image5.png)
 
 -   利用综合分类法，先预处理汉字轮廓图形得到汉字笔画；
 
@@ -62,12 +62,12 @@
 
 提出了一种结合卷积神经网络和随机森林统计[算法](http://lib.csdn.net/base/datastructure)对字符进行编组的算法。该论文的主要创新点为利用了卷积神经网络对字符进行二分类，根据随机森林分类文本行特征以及文本行的一致性属性对文本进行编组实现。如下图为论文提出的方法框架。 
 
-![这里写图片描述](bhsb/media/image6.png){width="5.402777777777778in" height="1.9027777777777777in"}
+![这里写图片描述](bhsb/media/image6.png)
 
 CNN网络的输入为输入图像的部分区域，CNN网络输出文本行信息作为随机森林分类器的输入，进而实现不同文本不同尺度的文字编组。在CNN网络基础上，论文增加了候选字符的笔画特征，对于不同语言的文本是普适的。该方法的一个依据在于统一的文本基本具有统一的笔画宽度，实质上就是对于每个可能属于文字部分的像素点和它最有可能所属的笔画建立联系，如果他们属于同一笔画，进一步形成了文字区域。由于自然场景中存在干扰，如电线杆、线化背景和区域干扰等，通过设置阈值控制区域笔画的宽度，将不符合要求的剔除掉，同时单独的字符通常不出现在图像中，也被剔除掉。如下图为论文实现的部分结果，从左到右依次为输入图像、字符特征提取、字符区域扩展和文本行编组结果。 
 
-![这里写图片描述](bhsb/media/image7.png){width="5.268657042869641in" height="1.0092158792650918in"}
+![这里写图片描述](bhsb/media/image7.png)
 
 如下图为论文的实现结果，从图中可以看到，在复杂的自然场景中，论文提出的方法获得了较为理想的效果，论文的算法在ICDAR数据集上的优势也较为明显，该方法主要的创新为利用了随机森林和字符的笔画特征对CNN分类结果进行了编组，充分利用了CNN的特征提取和字符的笔画特征和文本行的属性特征。
 
-![这里写图片描述](bhsb/media/image8.png){width="2.7313429571303587in" height="2.708040244969379in"}
+![这里写图片描述](bhsb/media/image8.png)
