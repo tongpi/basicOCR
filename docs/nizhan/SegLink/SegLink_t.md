@@ -4,7 +4,7 @@
 
 *Detecting Oriented Text in Natural Images by Linking Segments*
 
-*链接:* *http://xueshu.baidu.com/s?wd=paperuri%3A%28c3182ef8b3fb8ffdbd0232c78b438453%29&filter=sc\_long\_sign&tn=SE\_xueshusource\_2kduw22v&sc\_vurl=http%3A%2F%2Farxiv.org%2Fpdf%2F1703.06520&ie=utf-8&sc\_us=16077648517782010526*
+*链接:* *https://arxiv.org/pdf/1703.06520.pdf*
 
 **概 述：**
 
