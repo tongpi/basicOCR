@@ -1,4 +1,4 @@
-**论文**[[]{#OLE_LINK5 .anchor}]{#OLE_LINK4 .anchor}**Deep Direct Regression for Multi-Oriented Scence Text Detection浅析**
+**论文** **Deep Direct Regression for Multi-Oriented Scence Text Detection浅析**
 
 原文：[*https://arxiv.org/abs/1703.08289v1*](https://arxiv.org/abs/1703.08289v1)
 
@@ -44,11 +44,11 @@
 
 **Ground Truth和损失函数：**
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\WeChat Files\\883875869796170528.jpg](DR/media/image3.jpeg){width="2.2352985564304464in" height="2.2352985564304464in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\WeChat Files\\883875869796170528.jpg](DR/media/image3.jpeg)
 
 在多任务的情况下，损失函数由两部分组成：
 
-$$L = \ L_{\text{cls}} + \ \lambda_{\text{loc}} \ L_{\text{loc}}$$
+L = \ L_{\text{cls}} + \ \lambda_{\text{loc}} \ L_{\text{loc}}
 
 两部分损失值$L_{\text{cls}}$代表的是分类任务的代价，$L_{\text{loc}}$代表的是回归任务的代价，控制两个损失值平衡的是一个超参$\lambda_{\text{loc}}$。超参的存在主要是为调整分类任务和回归任务在总的损失函数中的重要性（贡献），一般取值在0.01-0.5。
 
@@ -68,7 +68,7 @@ $$L = \ L_{\text{cls}} + \ \lambda_{\text{loc}} \ L_{\text{loc}}$$
 
 这是一种尺度转换，然后计算损失函数，
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495443836(1).png](DR/media/image6.png){width="3.1132075678040243in" height="1.062658573928259in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495443836(1).png](DR/media/image6.png)
 
 **数据准备：**
 
@@ -84,6 +84,6 @@ $$L = \ L_{\text{cls}} + \ \lambda_{\text{loc}} \ L_{\text{loc}}$$
 
 **实验与结果：**
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495446021(1).png](DR/media/image8.png){width="5.768055555555556in" height="2.1913681102362204in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495446021(1).png](DR/media/image8.png)
 
-![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495446045(1).png](DR/media/image9.png){width="5.716666666666667in" height="5.0569444444444445in"}
+![C:\\Users\\zhanni\\AppData\\Local\\Temp\\1495446045(1).png](DR/media/image9.png)

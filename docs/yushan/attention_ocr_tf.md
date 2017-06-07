@@ -151,7 +151,7 @@ create\_logits函数首先定义了解码模块的基础单元为LSTMCell，这�
 
 attention模型的unroll\_cell函数调用了tf.contrib.legacy\_seq2seq.attention\_decoder函数。
 
-	def attention\_decoder(decoder\_inputs, initial\_state, attention\_states, cell, output\_size=None, num\_heads=1, loop\_function=None, dtype=dtypes.float32, scope=None, initial\_state\_attention=False, attn\_num\_hidden=128):
+	def attention_decoder(decoder_inputs, initial_state, attention_states, cell, output_size=None, num_heads=1, loop_function=None, dtype=dtypes.float32, scope=None, initial_state_attention=False, attn_num_hidden=128):
 
 其中：
 
