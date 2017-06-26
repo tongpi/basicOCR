@@ -49,7 +49,7 @@
 
 在下面的图 4和图 5中，我们展示了通过R-FCN学习到的position-sensitive score maps。不同的特征map标识了不同的特征相对位置信息。例如：“top-center-sensitive”score map对于那些top-center位置关系的物体显示了较高的分数。如果一个候选框与真实物体精确的重合了（图 4），那么大多数的k\*k个bins会被强烈的激活，然后会得到较高的分数。相反的，如果候选边框与真实物体并没有完全准确的重合（图 5）那么有一些k\*k bins不会被激活，从而导致得分很低。
 
-[]{#t4 .anchor}![图像可视化效果](r-fcn/media/image7.png)
+![图像可视化效果](r-fcn/media/image7.png)
 
 **四．训练策略**
 
@@ -145,7 +145,7 @@ R-FCN是在Faster R-CNN的框架上进行改造，第一，把base的VGG16换成
 
 然后再将每一类的k\*k的矩阵进行average pooling，得到某一类的最后的分数。即cls\_score 就是 (c+1)个类别对应的最终得分。
 
-![](r-fcn/media/image17.png){width="2.486111111111111in" height="4.591573709536308in"}
+![](r-fcn/media/image17.png)
 
 同样的，边界框回归也一样。
 
