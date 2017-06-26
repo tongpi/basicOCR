@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project>
+    <datasource>
+        <inputStopWordPath>E:\opensource_project\Chinese-master\stopwords.dat</inputStopWordPath>
+        <inputTextPath>E:\data\result.dat</inputTextPath>
+        <outputTextPath>E:\data\acdat_res.dat</outputTextPath>
+    </datasource>
+</project>
