@@ -25,7 +25,7 @@ GPU版在环境变量中添加
 参考：https://github.com/SeanNaren/warp-ctc/tree/pytorch_bindings/pytorch_binding
 #### 1.4 注意问题
 1. 缺少cffi库文件 使用`pip install cffi`安装
-2. 安装pytorch_binding前,确认设置CUDA_HOME,虽然编译安装不会报错,但是在调用gpu时，会出现wrap_ctc没有gpu的属性的错误
+2. 安装pytorch_binding前,确认设置CUDA_HOME,虽然编译安装不会报错,但是在调用gpu时，会出现wrap_ctc没有gpu属性的错误
 ### 2. crnn预测(以21类中英文为例)
 运行`/contrib/crnn/demo.py`
 
@@ -42,8 +42,8 @@ GPU版在环境变量中添加
     img_path = './data/demo.png'
     # 识别的类别
     alphabet = 'ACIMRey万下依口哺摄次状璐癌草血运重'
-    # 设置模型参数 图片高度imgH=32, nc, 分类数目nclass=len(alphabet)+1 一个预留位, LSTM设置隐藏层数nh=256, 使用GPU个数ngpu=1
-    model = crnn.CRNN(32, 1, 63, 256, 1).cuda()
+    # 设置模型参数 图片高度imgH=32, nc, 分类数目nclass=len(alphabet)+1 一个预留位, LSTM设置隐藏层数nh=128, 使用GPU个数ngpu=1
+    model = crnn.CRNN(32, 1, 22, 128, 1).cuda()
 
 替换模型时，注意模型分类的类别数目
 ## crnn 训练(以21类中英文为例)
@@ -85,7 +85,7 @@ GPU版在环境变量中添加
     --keep_ratio         设置图片保持横纵比缩放, action='store_true'
     --random_sample      是否使用随机采样器对数据集进行采样, action='store_true'
     
-示例:python /contrib/crnn/crnn_main.py --tainroot [训练集路径] --valroot [验证集路径] --cuda --crnn [预训练模型路径] 
+示例:python /contrib/crnn/crnn_main.py --tainroot [训练集路径] --valroot [验证集路径] --nh 128 --cuda --crnn [预训练模型路径] 
 
 修改`/contrib/crnn/keys.py`中`alphabet = 'ACIMRey万下依口哺摄次状璐癌草血运重'`增加或者减少类别
 
@@ -93,6 +93,5 @@ GPU版在环境变量中添加
 
 训练和预测采用的类别数和LSTM隐藏层数需保持一致
 
-### crnn网络结构及实现
 
 
