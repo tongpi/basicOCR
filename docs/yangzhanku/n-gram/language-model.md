@@ -55,7 +55,7 @@
 
 1.  语言模型常用开源工具
 
-> ![](/basicOCR/docs/yangzhanku/n-gram/media/ngram-framework.png)
+> ![](/docs/yangzhanku/n-gram/media/ngram-framework.png)
 
 1.  srilm语言模型环境搭建
 
@@ -198,7 +198,7 @@ make test
 
 1.  语言模型结果说明
 
-> ![](/basicOCR/docs/yangzhanku/n-gram/media/bigram-model.png)
+> ![](/docs/yangzhanku/n-gram/media/bigram-model.png)
 
 其中文件格式：
 
