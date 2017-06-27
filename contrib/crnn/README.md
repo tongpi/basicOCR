@@ -29,12 +29,12 @@ GPU版在环境变量中添加
 ### 2. crnn预测(以21类中英文为例)
 运行`/contrib/crnn/demo.py`
 
-原始图片为: ![](/basicOCR/docs/yangmiao/CRNN/media/image33.jpg)
+原始图片为: ![](../../docs/yangmiao/CRNN/media/image33.jpg)
 
- ![](/basicOCR/docs/yangmiao/CRNN/media/image34.jpg)
+ ![](../../docs/yangmiao/CRNN/media/image34.jpg)
 
 
-识别结果为： ![](/basicOCR/docs/yangmiao/CRNN/media/image32.jpg)
+识别结果为： ![](../../docs/yangmiao/CRNN/media/image32.jpg)
 
     # 加载模型
     model_path = './samples/netCRNN_9_112580.pth'
