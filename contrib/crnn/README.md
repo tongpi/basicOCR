@@ -26,24 +26,27 @@ GPU版在环境变量中添加
 #### 1.4 注意问题
 1. 缺少cffi库文件 使用`pip install cffi`安装
 2. 安装pytorch_binding前,确认设置CUDA_HOME,虽然编译安装不会报错,但是在调用gpu时，会出现wrap_ctc没有gpu的属性的错误
-### 2. crnn预测
+### 2. crnn预测(以21类中英文为例)
 运行`/contrib/crnn/demo.py`
 
-原始图片为: ![](./media/image31.png)
+原始图片为: ![](../../docs/yangmiao/CRNN/media/image33.jpg)
 
-识别结果为：A-----v--a-i-l-a-bb-l-ee-- => Available
-    
+ ![](../../docs/yangmiao/CRNN/media/image34.jpg)
+
+
+识别结果为： ![](../../docs/yangmiao/CRNN/media/image32.jpg)
+
     # 加载模型
     model_path = './samples/netCRNN_9_112580.pth'
     # 需识别的图片
     img_path = './data/demo.png'
     # 识别的类别
-    alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    alphabet = 'ACIMRey万下依口哺摄次状璐癌草血运重'
     # 设置模型参数 图片高度imgH=32, nc, 分类数目nclass=len(alphabet)+1 一个预留位, LSTM设置隐藏层数nh=256, 使用GPU个数ngpu=1
     model = crnn.CRNN(32, 1, 63, 256, 1).cuda()
 
 替换模型时，注意模型分类的类别数目
-## crnn 训练
+## crnn 训练(以21类中英文为例)
 1. 数据预处理
 
 运行`/contrib/crnn/tool/tolmdb.py`
@@ -81,6 +84,15 @@ GPU版在环境变量中添加
     --adadelta           使用adadelta优化器, action='store_true'
     --keep_ratio         设置图片保持横纵比缩放, action='store_true'
     --random_sample      是否使用随机采样器对数据集进行采样, action='store_true'
-    
-    
+    
+示例:python /contrib/crnn/crnn_main.py --tainroot [训练集路径] --valroot [验证集路径] --cuda --crnn [预训练模型路径] 
+
+修改`/contrib/crnn/keys.py`中`alphabet = 'ACIMRey万下依口哺摄次状璐癌草血运重'`增加或者减少类别
+
+3. 注意事项
+
+训练和预测采用的类别数和LSTM隐藏层数需保持一致
+
+### crnn网络结构及实现
+
 
