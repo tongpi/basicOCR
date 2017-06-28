@@ -28,7 +28,7 @@ parser.add_argument('--valroot', required=True, help='path to dataset')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=2)
 parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
 parser.add_argument('--imgH', type=int, default=32, help='the height / width of the input image to network')
-parser.add_argument('--nh', type=int, default=100, help='size of the lstm hidden state')
+parser.add_argument('--nh', type=int, default=256, help='size of the lstm hidden state')
 parser.add_argument('--niter', type=int, default=1000, help='number of epochs to train for')
 parser.add_argument('--lr', type=float, default=0.01, help='learning rate for Critic, default=0.00005')
 parser.add_argument('--beta1', type=float, default=0.5, help='beta1 for adam. default=0.5')
@@ -103,9 +103,17 @@ crnn = crnn.CRNN(opt.imgH, nc, nclass, nh, ngpu)
 crnn.apply(weights_init)
 if opt.crnn != '':
     print('loading pretrained model from %s' % opt.crnn)
-    crnn.load_state_dict(torch.load(opt.crnn))
-print(crnn)
 
+    pre_trainmodel = torch.load(opt.crnn)
+    model_dict = crnn.state_dict()
+    # replace the classfidy layer parameters
+    for k,v in model_dict.items():
+        if not (k == 'rnn.1.embedding.weight' or k == 'rnn.1.embedding.bias'):
+            model_dict[k] = pre_trainmodel[k]
+
+    crnn.load_state_dict(model_dict)
+print(crnn)
+	
 image = torch.FloatTensor(opt.batchSize, 3, opt.imgH, opt.imgH)
 text = torch.IntTensor(opt.batchSize * 5)
 length = torch.IntTensor(opt.batchSize)
