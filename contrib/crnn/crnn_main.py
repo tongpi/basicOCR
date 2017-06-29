@@ -21,7 +21,7 @@ sys.setdefaultencoding('utf8')
 
 import models.crnn as crnn
 
-os.environ["CUDA_VISIBLE_DEVICES"] ="1"
+#os.environ["CUDA_VISIBLE_DEVICES"] ="1"
 str1 = keys.alphabet
 parser = argparse.ArgumentParser()
 parser.add_argument('--trainroot', required=True, help='path to dataset')
