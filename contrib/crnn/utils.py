@@ -5,9 +5,9 @@ import torch.nn as nn
 import collections
 import chardet
 import numpy as np
-#import sys  
-#reload(sys)  
-#sys.setdefaultencoding('utf8')
+import sys  
+reload(sys)  
+sys.setdefaultencoding('utf8')
 
 class strLabelConverter(object):
 
@@ -29,39 +29,15 @@ class strLabelConverter(object):
     def encode(self, text, depth=0):
         length = []
         result = []
-        for item in text:
-            
-            if self.is_chinese(item): 
-               #type = chardet.detect(item)			
+        for item in text:            
+            if self.is_chinese(item): 		   
                item = unicode(item,'utf-8')
-			#print(item)
-            #print(len(item))
             length.append(len(item))
-            for char in item:
-                #if self.is_chinese(char):
-                    #print(char)
-                #    char1 = char.encode("utf8") 
-                #    print(char1)					
+            for char in item:				
                 index = self.dict[char]                
                 result.append(index)
-        #print(index,item)
         text = result
         return (torch.IntTensor(text), torch.IntTensor(length))
-        """Support batch or single str."""
-        '''#print text
-        if isinstance(text, str):
-            #text = [self.dict[char.lower()] for char in text]
-            text = [self.dict[char] for char in text]
-            length = [len(text)]
-            #print("[1]",text,length)
-        elif isinstance(text, collections.Iterable):
-            length = [len(s) for s in text]
-            text = ''.join(text)
-            text, _ = self.encode(text)
-
-        if depth:
-            return text, len(text)
-        return (torch.IntTensor(text), torch.IntTensor(length))'''
 
     def decode(self, t, length, raw=False):
         if length.numel() == 1:

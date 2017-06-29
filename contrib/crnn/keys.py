@@ -1,3 +1,5 @@
 #coding:UTF-8
-alphabet = u'\'ACIMRey万下依口哺摄次状璐癌草血运重'
-#alphabet = u'\'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+#alphabet = '万下依口哺摄次状璐癌草血运重'
+alphabet = 'ACIMRey万下依口哺摄次状璐癌草血运重'
+#alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+#alphabet = '羁一异内萄肇涉而成市且抗化尘多依功射吠瘤级长作安水妹常机醋弓脾见所病织屈立职经同科恐鳓后停非寥器闭衬壳穴其腺矽替七如岗簇有予下外服肌踏酬脑源专排五定钠帚骤性动集犬由草纸阿设及组遇准等腿俊位野道略取高牛城胜卡步颧另峨自良米已诊基达拔最较适文悉型上球明输得世者供通额张带用第枯澳头冷制离为咽看吴壁睡心层仅来忠拉量二材染氏受入痛曝卜獠痣院以此皤易可似至并竹酸移空能兼顾应往帅隆三醇弋不式炎我析鬓帕丙赘亚斜惊急肝窦夫纪中乳术发医肠囊前菌协从当柔套司牙严翁远回葡珠正波物遭结软确致敷加轻虽小腔'

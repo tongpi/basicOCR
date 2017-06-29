@@ -14,7 +14,8 @@ import utils
 import dataset
 import chardet
 import keys
-import sys  
+import sys 
+import collections 
 reload(sys)  
 sys.setdefaultencoding('utf8')
 
@@ -83,7 +84,6 @@ nh = int(opt.nh)
 alphabet = opt.alphabet.decode('utf-8')
 
 nclass = len(alphabet) + 1
-
 nc = 1
 
 converter = utils.strLabelConverter(alphabet)
@@ -103,17 +103,14 @@ crnn = crnn.CRNN(opt.imgH, nc, nclass, nh, ngpu)
 crnn.apply(weights_init)
 if opt.crnn != '':
     print('loading pretrained model from %s' % opt.crnn)
-
     pre_trainmodel = torch.load(opt.crnn)
-    model_dict = crnn.state_dict()
-    # replace the classfidy layer parameters
+    model_dict = crnn.state_dict() 
     for k,v in model_dict.items():
         if not (k == 'rnn.1.embedding.weight' or k == 'rnn.1.embedding.bias'):
             model_dict[k] = pre_trainmodel[k]
-
     crnn.load_state_dict(model_dict)
 print(crnn)
-	
+
 image = torch.FloatTensor(opt.batchSize, 3, opt.imgH, opt.imgH)
 text = torch.IntTensor(opt.batchSize * 5)
 length = torch.IntTensor(opt.batchSize)
@@ -191,9 +188,6 @@ def val(net, dataset, criterion, max_iter=100):
 def trainBatch(net, criterion, optimizer):
     data = train_iter.next()
     cpu_images, cpu_texts = data
-    
-	#print(tup)
-    #print("[0]:",cpu_texts)
     batch_size = cpu_images.size(0)
     utils.loadData(image, cpu_images)
     t, l = converter.encode(cpu_texts)

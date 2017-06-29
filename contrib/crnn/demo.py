@@ -9,7 +9,7 @@ import models.crnn as crnn
 
 model_path = './samples/netCRNN_9_112580.pth'
 img_path = './data/demo.png'
-alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+alphabet = 'ACIMRey万下依口哺摄次状璐癌草血运重'
 
 model = crnn.CRNN(32, 1, 63, 256, 1).cuda()
 print('loading pretrained model from %s' % model_path)
