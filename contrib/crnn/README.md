@@ -27,6 +27,8 @@ GPU版在环境变量中添加
 1. 缺少cffi库文件 使用`pip install cffi`安装
 2. 安装pytorch_binding前,确认设置CUDA_HOME,虽然编译安装不会报错,但是在调用gpu时，会出现wrap_ctc没有gpu属性的错误
 ### 2. crnn预测(以21类中英文为例)
+模型地址：链接：https://eyun.baidu.com/s/3dEUJJg9 密码：vKeD
+
 运行`/contrib/crnn/demo.py`
 
 原始图片为: ![](../../docs/yangmiao/CRNN/media/image33.jpg)
