@@ -7,11 +7,11 @@ from PIL import Image
 import models.crnn as crnn
 
 
-model_path = './samples/netCRNN_9_112580.pth'
-img_path = './data/demo.png'
+model_path = './data/netCRNN_ch_nc_21_nh_128'
+img_path = './data/image33.jpg'
 alphabet = 'ACIMRey万下依口哺摄次状璐癌草血运重'
 
-model = crnn.CRNN(32, 1, 63, 256, 1).cuda()
+model = crnn.CRNN(32, 1, 63, 128, 1).cuda()
 print('loading pretrained model from %s' % model_path)
 model.load_state_dict(torch.load(model_path))
 
