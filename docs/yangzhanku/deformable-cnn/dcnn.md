@@ -2,8 +2,7 @@ Deformable Convolutional Networks
 
 可变形的卷积网络
 
-![](/docs/yangzhanku/deformable-cnn/media/image1.png){width="5.768055555555556in"
-height="0.7944444444444444in"}
+![](/docs/yangzhanku/deformable-cnn/media/image1.png)
 
 摘要
 
@@ -29,8 +28,7 @@ height="0.7944444444444444in"}
 简而言之，CNNs本质上限于模拟大的未知转换。限制源自CNN模块的固定几何结构：卷积单元在固定位置对输入特征图进行采样;池化层以固定比例降低空间分辨率;
 RoI（感兴趣区）池化层将RoI分为固定空间箱等。它们缺少处理几何变换的内部机制。这会引起明显的问题。例如，相同CNN层中的所有激活单元的感受野大小相同。这对于通过空间位置编码语义的高级CNN层是不可取的。因为不同的位置可能对应于具有不同尺度或变形的物体，因此对于具有精细定位的视觉识别（例如，使用完全卷积网络的语义分割）需要自适应确定尺度或感受野大小\[41\]。对于另一个例子，尽管目标检测已经取得了显着和快速的进展\[16,52,15,47,46,40,7\]最近，所有的方法仍然依赖于基于原始边界框的特征提取。这显然是次优的，特别是对于非刚性物体。
 
-![](/docs/yangzhanku/deformable-cnn/media/image2.png){width="5.677083333333333in"
-height="4.347420166229221in"}
+![](/docs/yangzhanku/deformable-cnn/media/image2.png)
 
 在这项工作中，我们引入了两个新模块，大大增强了CNN的几何变换建模能力。第一个是可变形卷积。
 它在标准卷积中将2D偏移添加到常规网格采样位置。
@@ -50,8 +48,7 @@ CNN中的特征映射和卷积是3D。 可变形卷积和RoI池模块都在2D空
 通道维度的操作保持不变。
 在不损失一般性的情况下，这些模块在2D中描述可以表示清晰。扩展到3D是直接的。
 
-![](/docs/yangzhanku/deformable-cnn/media/image3.png){width="5.970236220472441in"
-height="4.302083333333333in"}
+![](/docs/yangzhanku/deformable-cnn/media/image3.png)
 
 2.1 可变卷积
 
@@ -86,7 +83,7 @@ G(q,p) = g($q_{x},p_{x}$)\*g($q_{y},p_{y}$), (4)
 这里G(a,b)=max(0,1-|a
 –b|),方程式（3）快速被计算因为G（q，p）仅对于少数的q是非零的。
 
-![](/docs/yangzhanku/deformable-cnn/media/image4.png){width="6.144219160104987in" height="9.5in"}
+![](/docs/yangzhanku/deformable-cnn/media/image4.png)
 
 如图2所示，通过在相同的输入特征图上应用卷积层来获得偏移。
 卷积核具有与当前卷积层相同的空间分辨率和膨胀（例如，图2中具有膨胀1的3\*3）。
@@ -117,8 +114,7 @@ pooling将RoI分为一个k\*k（k是一个自由参数）箱子并且输出一�
 
 双向线性插值来实现。
 
-图3展示了如何获得偏移量，首先，RoI池化层生成池化特征映射，从映射中,一个全连接层生成标准的偏移$\hat{p_{\text{ij}}}$,然后通过方程（6）中逐个元素与RoI的宽与高相乘转化为偏移量$p_{\text{ij}}$，因为![](/docs/yangzhanku/deformable-cnn/media/image5.png){width="2.166395450568679in"
-height="0.3332917760279965in"}这里$\gamma$是一个预定义的标量来调整偏移量。
+图3展示了如何获得偏移量，首先，RoI池化层生成池化特征映射，从映射中,一个全连接层生成标准的偏移$\hat{p_{\text{ij}}}$,然后通过方程（6）中逐个元素与RoI的宽与高相乘转化为偏移量$p_{\text{ij}}$，因为![](/docs/yangzhanku/deformable-cnn/media/image5.png)这里$\gamma$是一个预定义的标量来调整偏移量。
 经验设定为r = 0.1。 偏移归一化是使偏移学习必须相对于RoI大小保持不变。
 fc层通过反向传播学习，详见附录A。
 
@@ -169,8 +165,7 @@ DeepLab
 类别感知RPN与\[47\]中的区域提案网络几乎相同，只是将2类（对象或非对象）卷积分类器替换为（C
 + 1）类卷积分类器。
 
-![](/docs/yangzhanku/deformable-cnn/media/image6.png){width="5.061805555555556in"
-height="5.488830927384077in"}
+![](/docs/yangzhanku/deformable-cnn/media/image6.png)
 
 它可以被认为是SSD的简化版本\[40\]。
 
@@ -186,8 +181,7 @@ R-FCN
 
 这项工作是建立在在卷积中增加空间采样位置和带有额外偏移量的RoI池化的想法之上的，并且从目标任务中学习偏移量。
 
-![](/docs/yangzhanku/deformable-cnn/media/image7.png){width="5.768055555555556in"
-height="3.8826388888888888in"}
+![](/docs/yangzhanku/deformable-cnn/media/image7.png)
 
 当可变形卷积堆叠时，复合变形的影响是深刻的。
 这在图5中有示例。标准卷积中的感受野和采样位置在顶部特征图上是固定的（左）。
@@ -269,12 +263,9 @@ DeepID-Net 它引入了一个可变形约束池化层，也考虑了物体检测
 低电平滤波器的组合
 高斯滤波器及其平滑导数\[30\]被广泛用于提取低级图像结构，如角，边缘，T形结等。在某些条件下，这种滤波器形成一组基础，它们的线性组合在同一组几何变换中形成新的过滤器，例如可转向过滤器\[12\]中的多个方向和\[45\]中的多个尺度。我们注意到，虽然在\[45\]中使用了可变形核这个术语，但它的含义与我们在这项工作中是不同的。
 
-![](/docs/yangzhanku/deformable-cnn/media/image8.png){width="5.731778215223097in"
-height="1.6458333333333333in"}
+![](/docs/yangzhanku/deformable-cnn/media/image8.png)
 
-![](/docs/yangzhanku/deformable-cnn/media/image9.png){width="5.072916666666667in"
-height="3.337445319335083in"}
-
+![](/docs/yangzhanku/deformable-cnn/media/image9.png)
 大多数CNN从头开始学习所有的卷积过滤器。
 最近的工作\[25\]表明这可能是不必要的。
 它通过低级滤波器（高斯导数高达4阶）的加权组合来代替自由形式滤波器，并学习权重系数。
@@ -317,12 +308,9 @@ R-CNN和R-FCN，而不是区域候选和对象检测网络之间的特征共享�
 RPN网络按照\[47\]的程序第一阶段进行了分开训练。对于COCO，执行\[48\]中的联合训练，并在训练中进行特征共享。在8个GPU上分别为PASCAL
 VOC和COCO执行了30k和240k次的迭代。学习率分别在前2/3次和最后1/3次迭代中设为10^-3^和10^-4^。
 
-![](/docs/yangzhanku/deformable-cnn/media/image10.png){width="5.768055555555556in"
-height="1.9395833333333334in"}
+![](/docs/yangzhanku/deformable-cnn/media/image10.png)
 
-![](/docs/yangzhanku/deformable-cnn/media/image11.png){width="5.009790026246719in"
-height="5.238928258967629in"}
-
+![](/docs/yangzhanku/deformable-cnn/media/image11.png)
 4.2消融实验
 
 进行广泛的消融研究以验证我们的方法的功效和效率。
@@ -350,9 +338,7 @@ Pooling两者时，可以获得显着的精度提高。
 模型复杂度和运行时间
 表4报告了所提出的可变形ConvNets及其简单版本的模型复杂性和运行时间。可变形ConvNets只增加了模型参数和计算的小开销。这表明，除了增加模型参数之外，显著的性能改进来自于几何变换建模的能力。
 
-![](/docs/yangzhanku/deformable-cnn/media/image12.png){width="5.768055555555556in"
-height="2.884027777777778in"}
-
+![](/docs/yangzhanku/deformable-cnn/media/image12.png)
 4.3 在COCO上的对象检测
 
 在表5中，我们对可变形ConvNets和普通ConvNets在COCO测试开发集上的对象检测进行了广泛的比较。我们首先使用ResNet-101模型进行实验。类别感知RPN，faster
