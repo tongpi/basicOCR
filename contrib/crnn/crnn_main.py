@@ -21,14 +21,15 @@ sys.setdefaultencoding('utf8')
 
 import models.crnn as crnn
 
-#os.environ["CUDA_VISIBLE_DEVICES"] ="1"
+os.environ["CUDA_VISIBLE_DEVICES"] ="1"
 str1 = keys.alphabet
 parser = argparse.ArgumentParser()
 parser.add_argument('--trainroot', required=True, help='path to dataset')
 parser.add_argument('--valroot', required=True, help='path to dataset')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=2)
 parser.add_argument('--batchSize', type=int, default=64, help='input batch size')
-parser.add_argument('--imgH', type=int, default=32, help='the height / width of the input image to network')
+parser.add_argument('--imgH', type=int, default=32, help='the height of the input image to network')
+parser.add_argument('--imgW', type=int, default=100, help='the width of the input image to network')
 parser.add_argument('--nh', type=int, default=256, help='size of the lstm hidden state')
 parser.add_argument('--niter', type=int, default=1000, help='number of epochs to train for')
 parser.add_argument('--lr', type=float, default=0.01, help='learning rate for Critic, default=0.00005')
@@ -51,7 +52,7 @@ opt = parser.parse_args()
 print(opt)
 
 if opt.experiment is None:
-    opt.experiment = 'samples'
+    opt.experiment = 'expr'
 os.system('mkdir {0}'.format(opt.experiment))
 
 opt.manualSeed = random.randint(1, 10000)  # fix seed
@@ -75,12 +76,10 @@ train_loader = torch.utils.data.DataLoader(
     train_dataset, batch_size=opt.batchSize,
     shuffle=True, sampler=sampler,
     num_workers=int(opt.workers),
-    collate_fn=dataset.alignCollate(imgH=opt.imgH, keep_ratio=opt.keep_ratio))
+    collate_fn=dataset.alignCollate(imgH=opt.imgH, imgW=opt.imgW, keep_ratio=opt.keep_ratio))
 test_dataset = dataset.lmdbDataset(
     root=opt.valroot, transform=dataset.resizeNormalize((100, 32)))
 
-ngpu = int(opt.ngpu)
-nh = int(opt.nh)
 alphabet = opt.alphabet.decode('utf-8')
 
 nclass = len(alphabet) + 1
@@ -99,16 +98,22 @@ def weights_init(m):
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
 
-crnn = crnn.CRNN(opt.imgH, nc, nclass, nh, ngpu)
+
+crnn = crnn.CRNN(opt.imgH, nc, nclass, opt.nh)
 crnn.apply(weights_init)
 if opt.crnn != '':
     print('loading pretrained model from %s' % opt.crnn)
     pre_trainmodel = torch.load(opt.crnn)
-    model_dict = crnn.state_dict() 
-    for k,v in model_dict.items():
-        if not (k == 'rnn.1.embedding.weight' or k == 'rnn.1.embedding.bias'):
-            model_dict[k] = pre_trainmodel[k]
-    crnn.load_state_dict(model_dict)
+    model_dict = crnn.state_dict()
+    weig1 = 'rnn.1.embedding.weight'
+    bias1 = 'rnn.1.embedding.bias'
+    if len(model_dict[weig1]) == len(pre_trainmodel[weig1]) and len(model_dict[bias1]) == len(pre_trainmodel[bias1]):
+        crnn.load_state_dict(pre_trainmodel)
+    else :
+        for k,v in model_dict.items():
+            if (k != weig1 or k != bias1):
+                model_dict[k] = pre_trainmodel[k]            			
+        crnn.load_state_dict(model_dict)
 print(crnn)
 
 image = torch.FloatTensor(opt.batchSize, 3, opt.imgH, opt.imgH)
@@ -117,6 +122,7 @@ length = torch.IntTensor(opt.batchSize)
 
 if opt.cuda:
     crnn.cuda()
+    crnn = torch.nn.DataParallel(crnn, device_ids=range(opt.ngpu))
     image = image.cuda()
     criterion = criterion.cuda()
 
@@ -152,13 +158,13 @@ def val(net, dataset, criterion, max_iter=100):
     n_correct = 0
     loss_avg = utils.averager()
 
-    for i in range(min(max_iter, len(data_loader))):
+    max_iter = min(max_iter, len(data_loader))
+    for i in range(max_iter):
         data = val_iter.next()
         i += 1
         cpu_images, cpu_texts = data
         batch_size = cpu_images.size(0)
         utils.loadData(image, cpu_images)
-        #print ('[0]:',cpu_texts)
         t, l = converter.encode(cpu_texts)
         utils.loadData(text, t)
         utils.loadData(length, l)
@@ -176,7 +182,7 @@ def val(net, dataset, criterion, max_iter=100):
             if pred == target:
                 n_correct += 1
 
-    raw_preds = converter.decode(preds.data, preds_size.data, raw=True)
+    raw_preds = converter.decode(preds.data, preds_size.data, raw=True)[:opt.n_test_disp]
     for raw_pred, pred, gt in zip(raw_preds, sim_preds, cpu_texts):
         
         print('%-20s => %-20s, gt: %-20s' % (raw_pred.encode('utf-8'), pred.encode('utf-8'), gt.encode('utf-8')))

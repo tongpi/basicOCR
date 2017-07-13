@@ -3,16 +3,18 @@ import torch
 from torch.autograd import Variable
 import utils
 import dataset
+import os
 from PIL import Image
 
 import models.crnn as crnn
 
+#os.environ["CUDA_VISIBLE_DEVICES"] ="1"
 model_path = './data/netCRNN_ch_nc_21_nh_128.pth'
 img_path = './data/image33.jpg'
 alphabet = u'\'ACIMRey万下依口哺摄次状璐癌草血运重'
 #print(alphabet)
 nclass = len(alphabet) + 1
-model = crnn.CRNN(32, 1, nclass, 128, 1).cuda()
+model = crnn.CRNN(32, 1, nclass, 128).cuda()
 print('loading pretrained model from %s' % model_path)
 pre_model = torch.load(model_path)
 for k,v in pre_model.items():
